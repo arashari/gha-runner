@@ -4,6 +4,13 @@ echo "Starting..."
 
 set -e
 
+# Ensure work and tool directories exist and are writable
+sudo mkdir -p /runner/_work/_temp
+sudo mkdir -p /opt/hostedtoolcache
+
+sudo chown -R runner:runner /runner/_work
+sudo chown -R runner:runner /opt/hostedtoolcache
+
 # Fix Docker socket permissions
 sudo chmod 666 /var/run/docker.sock
 
